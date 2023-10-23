@@ -2,8 +2,10 @@
 
 kdt 10 lesson
 
-<h1>안녕하세용mkmkmkmkmkbbhbh
-<br>  dfddddd
+안녕하세용mkmkmkmkmkbbhbh<br>
+<br>dfddddd
+
+<br>오늘 수업 12시까지
 
 // git status 는 상태 확인
 // add(git add .은 모든 파일 다 올리기) commit push
