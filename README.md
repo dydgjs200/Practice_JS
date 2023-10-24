@@ -18,3 +18,5 @@ kdt 10 lesson
 // git push
 
 //pull은 홈페이지에서 수정한 것들을 vs code로 가져오는 것임(git -> vs code)
+
+//git에서 수정된 것을 먼저 받아오는게 좋음 -> 즉 git push를 먼저 한 뒤 수정해야함
