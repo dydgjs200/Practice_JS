@@ -1,0 +1,21 @@
+a:active {
+  background-color: blue;
+}
+
+h1:hover {
+  color: red;
+}
+
+input:focus {
+  background-color: orange;
+}
+
+.strips div:nth-child(odd) {
+  background-color: navy;
+  color: white;
+}
+
+.strips div:nth-child(even) {
+  background-color: yellow;
+  color: black;
+}
