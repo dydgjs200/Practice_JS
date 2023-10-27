@@ -1,0 +1,97 @@
+* {
+}
+
+.square {
+  background-color: blue;
+  width: 10vw;
+  height: 10vw;
+  text-align: center;
+  line-height: 10vw;
+  color: white;
+
+  margin: auto;
+  margin-top: calc(100vh / 2 - 5vw);
+
+  /* border-width: 10px;
+  border-bottom-style: dotted;
+  border-top-style: dashed;
+  border-right-style: groove;
+  border-left-style: double;
+  border-color: red; */
+
+  border-top: 10px solid black;
+  border-bottom: 5px dashed red;
+  border-left: 20px double aqua;
+  border-right: 15px groove yellowgreen;
+}
+
+/* border, radius */
+.box1 {
+  background-color: rgb(249, 130, 45);
+  border-top: 5px solid rgb(70, 249, 249);
+  border-bottom: 10px dotted royalblue;
+  border-left: 7px dashed rgb(203, 72, 232);
+  border-right: 8px groove darkcyan;
+  border-radius: 30% 20% 10% 60%;
+  width: 100px;
+  height: 100px;
+}
+
+.box_sizing {
+  width: 100px;
+  height: 100px;
+  padding: 20px;
+  border: 15px solid red;
+  background-color: orange;
+}
+
+.squ {
+  width: 100px;
+  height: 100px;
+  border: 1px solid;
+  display: inline-block;
+}
+.d-none {
+  display: none;
+  background-color: red;
+}
+.invisible {
+  /* visibility: hidden; */
+  background-color: orangered;
+}
+.opacity {
+  opacity: 0;
+  background-color: tomato;
+}
+
+/* assignment display elements */
+.display {
+  width: 200px;
+  height: 200px;
+  background-color: blue;
+  display: inline-block;
+}
+.display_box1 {
+  background-color: red;
+  width: 50px;
+  height: 50px;
+}
+.display_box2 {
+  background-color: aqua;
+  width: 50px;
+  height: 50px;
+}
+.display_box3 {
+  background-color: yellow;
+  width: 50px;
+  height: 50px;
+}
+.display_box1:hover {
+  opacity: 0;
+}
+.display_box2:focus {
+  visibility: none;
+}
+.display_box3:hover {
+  display: none;
+}

@@ -1,0 +1,48 @@
+#form1 {
+  width: auto;
+  display: inline-block;
+  text-align: center;
+}
+#form1 form {
+  padding-top: 30px;
+  width: 20vw;
+  height: 10vh;
+  background-color: rgb(196, 254, 235);
+  border-radius: 10;
+  font-weight: 700;
+  border: 2px solid black;
+}
+#form1 input:focus {
+  background-color: rgb(221, 221, 221);
+}
+#form1 input {
+  margin-left: 3px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+#form2 {
+  overflow: auto;
+  width: 20vw;
+  height: 30vh;
+  background-color: bisque;
+  border: 2px solid;
+  text-align: center;
+  border-radius: 5px;
+}
+#form2 input {
+  margin: 20px;
+}
+
+#form3 {
+  overflow: auto;
+  width: 20vw;
+  height: 50vh;
+  background-color: bisque;
+  border: 2px solid;
+  text-align: center;
+  border-radius: 5px;
+}
+#form3 textarea:focus {
+  background-color: rgb(232, 232, 232);
+}
