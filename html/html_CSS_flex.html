@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .parent1 {
+        background-color: skyblue;
+        width: 500px;
+        height: 500px;
+        display: flex;
+
+        flex-direction: row;
+        border: 5px solid;
+      }
+      .parent1 > div {
+        width: 100px;
+        height: 100px;
+        border: 3px solid;
+      }
+      .parent2 {
+        background-color: skyblue;
+        width: 500px;
+        height: 500px;
+        display: flex;
+
+        flex-direction: row-reverse;
+        border: 5px solid;
+      }
+      .parent2 > div {
+        width: 100px;
+        height: 100px;
+        border: 3px solid;
+      }
+      .parent3 {
+        background-color: skyblue;
+        width: 500px;
+        height: 500px;
+        display: flex;
+
+        flex-direction: column;
+        border: 5px solid;
+      }
+      .parent3 > div {
+        width: 100px;
+        height: 100px;
+        border: 3px solid;
+      }
+
+      .item1 {
+        background-color: antiquewhite;
+      }
+      .item2 {
+        background-color: cadetblue;
+        flex-direction: row-reverse;
+      }
+      .item3 {
+        background-color: rgb(118, 252, 40);
+        flex-direction: column;
+      }
+
+      /* 실습 6 */
+      .container {
+        text-align: center;
+        line-height: 3px;
+        width: 500px;
+        height: 500px;
+        display: flex;
+        background-color: aqua;
+        flex-direction: ro;
+
+        /* 줄바꿈 */
+        flex-wrap: nowrap;
+
+        /* justify 축 정렬 */
+        justify-content: space-evenly;
+      }
+      .container > div {
+        background-color: orange;
+        width: 100px;
+        height: 100px;
+        border: 3px solid;
+      }
+
+      .container_wrap {
+        width: 500px;
+        height: 500px;
+        border: 5px solid;
+        background-color: aquamarine;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-content: center;
+      }
+      .container_wrap > div {
+        width: 100px;
+        height: 100px;
+        background-color: green;
+        border: 3px solid;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- flex는 부모에게 줘야하며 부모의 자식들이 inline 정렬 된다. -->
+
+    <div class="parent1">
+      <div class="item1"></div>
+      <div class="item1"></div>
+      <div class="item1"></div>
+    </div>
+    <div class="parent2">
+      <div class="item2"></div>
+      <div class="item2"></div>
+      <div class="item2"></div>
+    </div>
+    <div class="parent3">
+      <div class="item3"></div>
+      <div class="item3"></div>
+      <div class="item3"></div>
+    </div>
+
+    <!-- 실습 6 -->
+    <div class="container">
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+    </div>
+
+    <!-- justify -->
+    <!-- flex-end와 row-reverse의 차이는 원소의 시작 차이다. -->
+    <!-- flex-end는 ABC 순으로 나오며, row-reverse는 CBA 순이다. -->
+
+    <!-- flex-wrap -->
+    <div class="container_wrap">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .background-img {
+        background-color: orange;
+        background-image: url("https://item.kakaocdn.net/do/d84248170c2c52303db27306a00fb861f604e7b0e6900f9ac53a43965300eb9a");
+        width: 800px;
+        height: 500px;
+
+        /* 배경 반복 */
+        background-repeat: repeat-x;
+        background-repeat: repeat-y;
+        background-repeat: no-repeat;
+
+        /* 배경 위치 */
+        background-position: left;
+        background-position: 100px;
+
+        /* 배경 사이즈 */
+        background-size: 100px;
+        background-size: cover;
+        background-size: contain;
+      }
+      .background-att {
+        width: 300px;
+        height: 300px;
+        overflow: scroll;
+        background-image: url("https://item.kakaocdn.net/do/d84248170c2c52303db27306a00fb861f604e7b0e6900f9ac53a43965300eb9a");
+        /* local은 back이미지가 움직임, scroll은 안움직임. */
+        /* fixed는 만약 스크롤 바의 배경이 있을 때, 페이지 스크롤 시 이미지가 움직임 -> 뷰포트 고정이라 */
+        background-attachment: local;
+        background-attachment: scroll;
+        background-attachment: fixed;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="background-img"></div>
+    <div class="background-att">
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam est
+      minus aliquam fugiat maxime quos, eum harum mollitia nobis asperiores
+      omnis incidunt reprehenderit, quis dolorem cupiditate placeat dolorum ut
+      rerum! Odit, dolorem perspiciatis ea voluptate vero eius sint nam libero
+      exercitationem impedit mollitia unde quidem, fuga pariatur vitae
+      praesentium, molestias blanditiis officiis. Impedit amet id nemo
+      voluptate, tempore placeat. Sint? Earum dolorum sequi mollitia atque sit
+      deserunt. Incidunt inventore facere ex debitis tempora ut aspernatur
+      fugiat, officiis ratione laborum voluptatem nobis quisquam voluptate
+      soluta rem in id eaque? Voluptatum, minus? Quasi optio quas, eos cum
+      ducimus magnam quos hic molestiae iure quod! Adipisci minus facere ipsa
+      distinctio, provident sequi, deserunt cum dignissimos dolores, odio quam
+      tempora illo nisi atque consequuntur.
+    </div>
+  </body>
+</html>
