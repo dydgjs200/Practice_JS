@@ -5,26 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-      .container {
-        width: auto;
-        height: 50px;
-        background-color: rgb(211, 205, 205);
+      * {
+        background-color: rgb(12, 69, 92);
+        font-size: 32px;
+        color: white;
+      }
+      .button {
+        width: 200px;
+        height: 100px;
+        border: 3px solid orange;
         display: flex;
-        justify-content: space-between;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        left: 300px;
+        top: 300px;
+
+        /* transition을 통한 효과 */
+        transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s,
+          color 0.3s;
       }
 
-      .container > div {
-        font-weight: 700;
-        font-size: 25px;
-        margin: 8px;
+      .button:hover {
+        border-color: aquamarine;
+        transform: translateY(-5px);
+        color: rgb(98, 202, 43);
+        box-shadow: 0 0.5em 0.5em -0.4em grey;
+        cursor: pointer;
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <div>MENU1</div>
-      <div>MENU2</div>
-      <div>MENU3</div>
-    </div>
+    <div class="button">Click!</div>
   </body>
 </html>
