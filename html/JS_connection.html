@@ -4,7 +4,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JS_connection</title>
-    <script src="/JavaScript/js_01.js"></script>
+    <script src="/JavaScript/js_02.js"></script>
+    <style>
+      .button_div {
+        display: inline-block;
+      }
+    </style>
+    <script>
+      let input1 = function () {
+        let num1 = prompt("input1");
+        return Number(num1);
+      };
+      let input2 = function () {
+        let num2 = prompt("input2");
+        return Number(num2);
+      };
+    </script>
   </head>
-  <body></body>
+  <body>
+    <div class="button_div">
+      <button onclick="add(input1(), input2());">add</button>
+      <button onclick="sub(input1(), input2());">sub</button>
+      <button onclick="divide(input1(), input2());">divide</button>
+      <button onclick="mul(input1(), input2());">mul</button>
+    </div>
+  </body>
 </html>
