@@ -4,61 +4,47 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="CSS/practice.css" />
-    <!-- 아래는 과제의 답 -->
-    <!-- <style>
-      .circle {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        position: relative;
-      }
-      .circle1 {
-      }
-      .eye1 {
-        background-color: white;
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        left: 30px;
-        top: 20px;
-        /* 부모를 기준으로 해야하므로 absolute */
-        position: absolute;
-      }
-      .eye2 {
-        background-color: black;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        left: 30px;
-        top: 25px;
-        position: absolute;
-      }
-    </style> -->
   </head>
   <body>
-    <!-- 내가 짠 코드 -->
-    <div class="circle">
-      <div class="circle" id="eyes1"></div>
-      <div class="circle" id="eyes2"></div>
-      <div class="circle" id="c1"></div>
-      <div class="circle" id="c2"></div>
-      <div class="circle" id="c3"></div>
-      <div class="circle" id="c4"></div>
-      <div class="circle" id="c5"></div>
-    </div>
-    <div class="green"><img src="/img/green.png" /></div>
+    <h1>계산기 만들기</h1>
 
-    <!-- 아래는 과제의 답 코드임 -->
-    <!-- <div class="circle circle1">
-      <div class="eye1"></div>
-      <div class="eye2"></div>
+    <div class="container">
+      값1 : <input type="text" id="value1" placeholder="val1" /><br />
+      값2 : <input type="text" id="value2" placeholder="val2" /><br />
+      연산자 : <input type="text" id="oper" placeholder="oper" /><br />
+      결과 : <input type="text" id="res" placeholder="res" /><br />
     </div>
-    <div class="circle circle2"></div>
-    <div class="circle circle3"></div>
-    <div class="circle circle4"></div>
-    <div class="circle circle5"></div> -->
+    <br />
+    <div class="button">
+      <input type="button" id="btn1" value="계산하기" onclick="calculator()" />
+      <input type="button" id="btn2" value="초기화" onclick="reset()" />
+    </div>
 
-    <!-- background 속성 -->
+    <hr />
+    <hr />
+    <h1>방명록 만들기</h1>
+
+    작성자 <input type="text" id="writer" /><br />
+    내용 <input type="text" id="content" /><br />
+    <br />
+    <input
+      type="button"
+      name="submit"
+      id="submit"
+      value="작성"
+      onclick="writing()"
+    /><br />
+    <br />
+
+    <table border="3px" cellspacing="0px" id="table">
+      <tr>
+        <th id="tableNumber">번호</th>
+        <th id="tableWriter">작성자</th>
+        <th id="tableContent">내용</th>
+        <th id="tableDay">작성일</th>
+      </tr>
+    </table>
+
+    <script src="/JavaScript/js_05_ass.js"></script>
   </body>
 </html>

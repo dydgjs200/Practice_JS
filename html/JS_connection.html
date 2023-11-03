@@ -4,7 +4,45 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JS_connection</title>
-    <script src="/JavaScript/js_programmers.js"></script>
   </head>
-  <body></body>
+  <style>
+    .box {
+      border: 1px solid;
+      width: 100px;
+      height: 100px;
+    }
+    #green {
+      background-color: green;
+    }
+    #red {
+      background-color: red;
+    }
+    .d-none {
+      opacity: 0.5;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="box" id="green">1</div>
+      <div class="box" id="red">2</div>
+      <div class="box">3</div>
+      <div class="box">4</div>
+      <div class="box">5</div>
+    </div>
+    <button onclick="addClass()">addClass</button>
+    <button onclick="removeClass()">removeClass</button>
+    <button onclick="containClass()">containClass</button>
+    <button onclick="toggleClass()">toggleClass</button>
+    <input type="text" value="" name="username" />
+    <input type="text" value="" name="username" />
+
+    <div id="parent">
+      TEXT
+      <div id="two">first div</div>
+      <div>second div</div>
+    </div>
+
+    <!-- 파싱 문제로 인해 body 가장 밑에서 연동 -->
+    <script src="/JavaScript/js_04.js"></script>
+  </body>
 </html>

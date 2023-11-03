@@ -5,37 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-      * {
-        background-color: rgb(12, 69, 92);
-        font-size: 32px;
-        color: white;
-      }
-      .button {
-        width: 200px;
-        height: 100px;
-        border: 3px solid orange;
+      body {
+        height: 100vh;
         display: flex;
+        background-color: black;
+      }
+      .center {
+        /*모든 요소 가운데 정렬*/
         align-items: center;
         justify-content: center;
-        position: absolute;
-        left: 300px;
-        top: 300px;
-
-        /* transition을 통한 효과 */
-        transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s,
-          color 0.3s;
       }
+      .container {
+        width: 1200px;
+        height: 900px;
+        background-color: rgb(90, 183, 152);
+        display: flex;
+        flex-direction: column;
+      }
+      .box {
+        display: flex;
+        flex-direction: row;
 
-      .button:hover {
-        border-color: aquamarine;
-        transform: translateY(-5px);
-        color: rgb(98, 202, 43);
-        box-shadow: 0 0.5em 0.5em -0.4em grey;
-        cursor: pointer;
+        width: 400px;
+        height: 200px;
+
+        border: 3px solid;
+      }
+      .empty {
+        /* 박스 잘림을 방지하기 위한 빈 박스 */
+        width: 300px;
+        height: 300px;
+      }
+      .square {
+        width: 20px;
+        height: 60px;
+        margin: 5px;
+
+        background-color: white;
+        animation: big 1s ease-in-out infinite;
+      }
+      .square:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .square:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .square:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .square:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      .square:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+      @keyframes big {
+        0% {
+          transform: scaleY(1);
+        }
+        50% {
+          transform: scaleY(2);
+        }
+        100% {
+          transform: scaleY(1);
+        }
       }
     </style>
   </head>
   <body>
-    <div class="button">Click!</div>
+    <body class="center">
+      <div class="container">
+        <div class="empty"></div>
+        <div class="box center">
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+        </div>
+      </div>
+    </body>
   </body>
 </html>
