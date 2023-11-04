@@ -67,3 +67,27 @@ function removeChildNode() {
   let standard = document.getElementById("li");
   ul.removeChild(standard);
 }
+
+/////////////// addEventListener
+// function으로 콜백함수 e를 받는게 중요
+let eventBox = document.querySelector(".eventBox");
+let eventInput = document.querySelector(".eventInput");
+
+eventBox.addEventListener("click", function () {
+  alert("click!");
+});
+eventBox.addEventListener("mouseover", function (e) {
+  console.log("e : ", e);
+  e.currentTarget.style.backgroundColor = "blue";
+});
+eventBox.addEventListener("mouseout", function (e) {
+  e.currentTarget.style.backgroundColor = "white";
+});
+eventInput.addEventListener("focus", function (e) {
+  e.currentTarget.style.backgroundColor = "aqua";
+});
+
+//scroll(현재 홈페이지의 스크롤을 이용)
+window.addEventListener("scroll", function () {
+  console.log("scroll");
+});

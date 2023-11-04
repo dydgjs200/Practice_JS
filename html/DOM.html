@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      body {
+        width: 1000px;
+        height: 1000px;
+      }
+    </style>
   </head>
   <body>
     <div id="container">
@@ -34,6 +40,16 @@
     <button onclick="beforeNode()">beforeNode</button>
     <button onclick="removeNode()">removeNode</button>
     <button onclick="removeChildNode">removeChildNode</button>
+
+    <div>
+      <div
+        class="eventBox"
+        style="width: 100px; height: 100px; border: 3px solid"
+      ></div>
+      <div>
+        <input type="text" class="eventInput" />
+      </div>
+    </div>
 
     <script src="/JavaScript/js_05_DOM.js"></script>
   </body>

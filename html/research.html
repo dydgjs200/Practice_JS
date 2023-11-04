@@ -3,73 +3,55 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="CSS/research.css" />
     <title>Document</title>
-
-    <style>
-      @font-face {
-        font-family: "DNFBitBitv2";
-        font-style: normal;
-        font-weight: 400;
-        src: url("//cdn.df.nexon.com/img/common/font/DNFBitBitv2.otf")
-          format("opentype");
-      }
-      .noon {
-        font-family: "DNFBitBitv2";
-      }
-    </style>
   </head>
   <body>
-    <div id="form1">
-      <h2 class="noon">설문조사</h2>
-      <form>
-        이름 <input type="text" /><br />
-        이메일 <input type="text" placeholder="dydgjs2016@naver.com" /><br />
-      </form>
-    </div>
+    <script>
+      var a = "abc";
+      console.log(a.repeat(3));
 
-    <br /><br />
+      var b = "   happy   Day !   ";
+      console.log(b.trim());
 
-    <div id="form2">
-      <h2 class="noon">나이</h2>
-      <form>
-        <input type="radio" name="age" value="10" checked />10대
-        <input type="radio" name="age" value="20" />20대
-        <input type="radio" name="age" value="30" />30대
-        <input type="radio" name="age" value="40" />40대
-        <input type="radio" name="age" value="50" />50대
-        <input type="radio" name="age" value="60" />60대
-      </form>
-    </div>
+      var arr = ["a", "b", "c"];
+      arr.push("d");
+      console.log(arr);
 
-    <br />
+      arr.pop();
+      console.log(arr);
 
-    <div id="form3">
-      <h2 class="noon">원하는 강의</h2>
-      <form>
-        <input type="checkbox" name="lecture" value="html" checked /> html
-        <input type="checkbox" name="lecture" value="JavaScript" /> JavaScript
-        <input type="checkbox" name="lecture" value="CSS" /> CSS
+      arr.unshift("K");
+      console.log(arr);
 
-        <br /><br />
-        <textarea
-          cols="100"
-          rows="10"
-          placeholder="원하는 값을 입력"
-        ></textarea>
-        <input type="button" name="submit" value="제출" />
-      </form>
-    </div>
+      arr.shift();
+      console.log(arr);
 
-    <!-- <div id="form4">
-      <form>
-        <textarea
-          cols="100"
-          rows="10"
-          placeholder="원하는 값을 입력"
-        ></textarea>
-        <input type="button" name="submit" value="제출" />
-      </form>
-    </div> -->
+      var arr = ["ajnnejqt", "bamzmror", "camkcen", "ddlzmemt"];
+      var fil = arr.filter((a) => a.length > 5 && a.charAt(1) == "a");
+      console.log(fil);
+
+      var include = arr.includes("a");
+      console.log(include);
+
+      var arr1 = ["a", "b", "c", "d", "e", "f"];
+      var arr2 = [, "c", "d", "f", "k", "z", "AAAA"];
+      var same = arr1.filter((a) => arr2.includes(a));
+      var diff = arr1.filter((a) => !arr2.includes(a));
+      console.log(same);
+      console.log(diff);
+
+      console.log(arr2.filter((a) => !arr1.includes(a)));
+
+      var date = new Date();
+      console.log(date);
+
+      var year = date.getFullYear();
+      var month = date.getMonth();
+      var day = date.getDate();
+
+      console.log(`${year} - ${month} - ${day}`);
+
+      console.log(date.getDay());
+    </script>
   </body>
 </html>
