@@ -112,18 +112,28 @@
     <!-- 내용은 여러번 들갈수있음 -->
 
     <script>
+      // 계속 추가되지 않는 문제 해결요망
+      let text = "";
+      $(document).ready(function () {
+        $("td > p").on("click", function (e) {
+          text = $(this).text();
+          $("#date").val(text);
+        });
+      });
       function writeSchedule() {
-        let val = $("#date").val();
         let content = $("#content").val();
-
         let p = document.querySelectorAll("p");
-        for (var i = 0; i < p.length; i++) {
-          if (p[i].innerText == val) {
-            $("td > p").append(`<p>${content}</p>`);
+        for (let i = 0; i < p.length; i++) {
+          if (text == $("p").eq(i).text()) {
+            $("p").eq(i).append(`<div>${content}</div>`);
           }
         }
-        //
       }
+
+      // $("td > p").append(`<p>${content}</p>`);
+
+      // let val = $("#date").val();
+      // let content = $("#content").val();
     </script>
   </body>
 </html>
