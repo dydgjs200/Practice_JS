@@ -4,86 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style>
-      body {
-        height: 100vh;
-        display: flex;
-        background-color: black;
-      }
-      .center {
-        /*모든 요소 가운데 정렬*/
-        align-items: center;
-        justify-content: center;
-      }
-      .container {
-        width: 1200px;
-        height: 900px;
-        background-color: rgb(90, 183, 152);
-        display: flex;
-        flex-direction: column;
-      }
-      .box {
-        display: flex;
-        flex-direction: row;
-
-        width: 400px;
-        height: 200px;
-
-        border: 3px solid;
-      }
-      .empty {
-        /* 박스 잘림을 방지하기 위한 빈 박스 */
-        width: 300px;
-        height: 300px;
-      }
-      .square {
-        width: 20px;
-        height: 60px;
-        margin: 5px;
-
-        background-color: white;
-        animation: big 1s ease-in-out infinite;
-      }
-      .square:nth-child(1) {
-        animation-delay: 0.1s;
-      }
-      .square:nth-child(2) {
-        animation-delay: 0.2s;
-      }
-      .square:nth-child(3) {
-        animation-delay: 0.3s;
-      }
-      .square:nth-child(4) {
-        animation-delay: 0.4s;
-      }
-      .square:nth-child(5) {
-        animation-delay: 0.5s;
-      }
-      @keyframes big {
-        0% {
-          transform: scaleY(1);
-        }
-        50% {
-          transform: scaleY(2);
-        }
-        100% {
-          transform: scaleY(1);
-        }
-      }
-    </style>
   </head>
   <body>
-    <body class="center">
-      <div class="container">
-        <div class="empty"></div>
-        <div class="box center">
-          <div class="square"></div>
-          <div class="square"></div>
-          <div class="square"></div>
-          <div class="square"></div>
-          <div class="square"></div>
-        </div>
-      </div>
-    </body>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li id="hello">3</li>
+      <li>4</li>
+      <li>5</li>
+    </ul>
+
+    <script>
+      let li = document.getElementsByTagName("ul > li");
+      let line = document.createElement("li");
+      line.innerText("6");
+
+      li.append(line);
+    </script>
   </body>
 </html>
