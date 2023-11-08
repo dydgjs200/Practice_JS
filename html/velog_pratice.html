@@ -6,20 +6,31 @@
     <title>Document</title>
   </head>
   <body>
-    <ul>
-      <li>1</li>
-      <li>2</li>
-      <li id="hello">3</li>
-      <li>4</li>
-      <li>5</li>
-    </ul>
+    작성자 :
+    <input type="text" id="writer" /><br />
+    내용 :
+    <input type="text" id="content" /><br />
+    <input type="button" value="작성" onclick="submit()" /><br />
+
+    <br />
+
+    <div>
+      <table border="2px" cellspacing="0px">
+        <tr>
+          <th>번호</th>
+          <th>작성자</th>
+          <th>내용</th>
+          <th>작성일</th>
+        </tr>
+      </table>
+    </div>
 
     <script>
-      let li = document.getElementsByTagName("ul > li");
-      let line = document.createElement("li");
-      line.innerText("6");
-
-      li.append(line);
+      let num = 0;
+      function submit() {
+        let writer = document.getElementById("writer").value;
+        let content = document.getElementById("content").value;
+      }
     </script>
   </body>
 </html>
