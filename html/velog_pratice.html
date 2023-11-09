@@ -4,32 +4,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"
+      integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY="
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      .img {
+        width: 300px;
+        height: 300px;
+        border: 5px solid orange;
+        border-radius: 10px;
+      }
+      button {
+        margin-left: 10px;
+      }
+    </style>
   </head>
   <body>
-    작성자 :
-    <input type="text" id="writer" /><br />
-    내용 :
-    <input type="text" id="content" /><br />
-    <input type="button" value="작성" onclick="submit()" /><br />
-
+    <div class="img">
+      <img src="" alt="과일" />
+    </div>
     <br />
-
     <div>
-      <table border="2px" cellspacing="0px">
-        <tr>
-          <th>번호</th>
-          <th>작성자</th>
-          <th>내용</th>
-          <th>작성일</th>
-        </tr>
-      </table>
+      <button class="apple" onclick="change('apple')">사과</button
+      ><button class="banana" onclick="change('banana')">바나나</button
+      ><button class="grape" onclick="change('grape')">포도</button
+      ><button class="peach" onclick="change('peach')">복숭아</button>
     </div>
 
     <script>
-      let num = 0;
-      function submit() {
-        let writer = document.getElementById("writer").value;
-        let content = document.getElementById("content").value;
+      function change(fruit) {
+        $("img").attr("src", `/img/${fruit}.jpg`);
       }
     </script>
   </body>
