@@ -1,0 +1,94 @@
+@font-face {
+  font-family: "EASTARJET-Medium";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/EASTARJET-Medium.woff2")
+    format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  /* height의 경우 100%는 실제로 적용 x -> 그래서 100vh가 안전함 */
+  height: 100vh;
+  /* 이미지의 불투명도 마스킹을 함 */
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url(/img/room.jpg);
+}
+
+.container .header {
+  width: 80%;
+  height: 80px;
+  /* 수평기준으로 중앙에 오도록 함. margin left, margin right auto */
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  /* align-items는 높이가 80px인 애를 기준으로 중앙에 정렬시킴 */
+  align-items: center;
+}
+
+.container .header h1 a {
+  text-decoration: none;
+  color: white;
+  /* 위에서 설정한 폰트 지정 */
+  font-family: "EASTARJET-Medium";
+}
+
+.container .nav ul li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.container .nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-family: "EASTARJET-Medium";
+}
+
+.container .nav ul li a:hover {
+  color: #1fdfdf;
+}
+
+.container .hero {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  font-family: "EASTARJET-Medium";
+}
+
+.container .hero h2 {
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+
+.container .hero p {
+  font-size: 22px;
+}
+
+.container .hero button {
+  /* 버튼 배경 날리기 */
+  background: none;
+  border: 2px solid darkseagreen;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 20px;
+  margin-top: 30px;
+  /* 클릭 시 잔상없앰 */
+  outline: none;
+  /* 커서 올릴 시 포인터를 보이게함 */
+  cursor: pointer;
+  /* 입체적 애니메이션 -> 모든 속성을 딜레이 0.4초(호버) */
+  transition: all 0.4s;
+}
+
+.container .hero button:hover {
+  background-color: darkslategray;
+}

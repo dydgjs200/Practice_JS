@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="/JavaScript/connection.js"></script>
+    <script>
+      window.onload = function () {
+        const storedArray = JSON.parse(localStorage.getItem("Array"));
+        console.log(storedArray);
+        if (storedArray) {
+          let pic = document.getElementById("pic");
+          if (pic) {
+            for (var i = 0; i < localStorage.length; i++) {
+              let img = document.createElement("img");
+              img.setAttribute("src", storedArray[i]);
+              pic.appendChild(img);
+            }
+          } else {
+            console.log("Element with id 'pic' not found.");
+          }
+        } else {
+          console.log("Array not found in localStorage.");
+        }
+      };
+    </script>
+  </head>
+  <body>
+    <!-- <button onclick="getClick()">버튼클릭</button> -->
+    <div id="pic" style="display: flex; flex-direction: column"></div>
+  </body>
+</html>

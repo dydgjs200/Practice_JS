@@ -20,6 +20,66 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
+    <!-- jQuery -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
   </head>
-  <body></body>
+  <body>
+    <label for="id"> id : </label>
+    <input type="text" name="id" id="id" />
+    <label for="pw"> password : </label>
+    <input type="text" name="pw" id="pw" />
+
+    <button type="button" onclick="login()">로그인</button>
+    <button type="button" onclick="checkLoggedIn()">로그인체크</button>
+    <button type="button" onclick="logout()">로그아웃</button>
+  </body>
+
+  <script>
+    // 웹 스토리지 : 프론트에서 웹에 저장할 수 있는 저장소
+    // key, value로 이뤄진 데이터 저장
+    // 세션 스토리지 : 세션이 끝날 때 모두 사라짐
+    // 탭이 다른 경우, 탭을 닫은 경우 저장된 데이터 사용 불가
+    // 로컬 스토리지 : 세션 끝나도 데이터 지워지지 않음
+    // 만료 시간이 제한됨.
+
+    const inputId = document.querySelector("#id");
+    const inputPW = document.querySelector("#pw");
+
+    const id = "aaaa";
+    const pw = "1234";
+
+    const login = () => {
+      if (inputId.value && inputPW.value) {
+        console.log(`id: ${inputId.value}, pw : ${inputPW.value}`);
+
+        if (inputId.value === id && inputPW.value === pw) {
+          alert("로그인 성공");
+          localStorage.setItem("logedIn", true);
+          inputId.value = "";
+          inputPW.value = "";
+        } else {
+          alert("로그인 실패");
+          inputPW.value = "";
+        }
+      } else {
+        alert("아이디와 비번 입력");
+      }
+    };
+
+    const checkLoggedIn = () => {
+      console.log(localStorage.getItem("loggedIn"));
+
+      if (localStorage.getItem("loggedIn")) {
+        console.log("로그인 유져입니다.");
+      }
+    };
+
+    const logout = () => {
+      localStorage.removeItem("loggedIn");
+    };
+  </script>
 </html>
