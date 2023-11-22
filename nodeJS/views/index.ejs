@@ -4,13 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>index</title>
-    <link rel="stylesheet" href="/static/css/index.css" />
+    <%- include("./component/head", {title: 'Home'})%>
   </head>
   <body>
     <%- include('./component/header.ejs') %>
     <h1>Hello Ejs</h1>
-    <%for(let i=0; i<10; i++){%>
+    <!-- <%for(let i=0; i<10; i++){%>
     <div>hi ~ <%= i %>번째</div>
-    <%}%>
+    <%}%> -->
+
+    <!-- btns 버튼 -->
+    <% for(let btn of btns){ %>
+    <button type="button" class="btn btn-info"><%= btn %></button>
+    <% } %>
+
+    <!-- isLogin -->
+    <% if(!isLogin) { %>
+    <h4>아직 로그인 안함</h4>
+    <% } else { %>
+    <h4>로그인 성공</h4>
+    <div><%= me.name %></div>
+    <div><%= me.msg %></div>
+    <% } %>
   </body>
 </html>
