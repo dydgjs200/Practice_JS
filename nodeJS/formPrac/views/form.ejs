@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <fieldset>
+      <legend>Assignment 1</legend>
+      <form action="/getForm">
+        이름 <input type="text" name="name" />
+        <fieldset>
+          <legend>성별</legend>
+          <input type="radio" name="gender" value="man" />남자
+          <input type="radio" name="gender" value="woman" />여자
+        </fieldset>
+        <fieldset>
+          <legend>생년월일</legend>
+          <!-- date를 통한 선택 -->
+          <input type="date" name="birthdate" id="birthdate" />
+
+          <!-- 년, 월, 일 따로 선택 -->
+          <select name="year" id="year">
+            <% for(let i=1970; i<=2023; i++){ %>
+            <option value="<%= i%>"><%= i %></option>
+            <% } %>
+          </select>
+          <label for="year">년</label>
+
+          <select name="month" id="month">
+            <% for(let i=1; i<=12; i++){ %>
+            <option value="<%= i%>"><%= i %></option>
+            <% } %>
+          </select>
+          <label for="year">월</label>
+        </fieldset>
+        <fieldset>
+          <legend>관심사</legend>
+          <input type="checkbox" />여행 <input type="checkbox" />패션
+          <input type="checkbox" />음식
+        </fieldset>
+
+        <input type="submit" name="submit" value="회원가입" />
+      </form>
+    </fieldset>
+  </body>
+</html>
