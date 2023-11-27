@@ -26,14 +26,19 @@ app.get("/", function (req, res) {
   res.render("form");
 });
 
-app.get("/getForm", function (req, res) {
-  res.render("result", {
-    userInfo: req.query,
-  });
+// axios 페이지
+app.get("/axios", function (req, res) {
+  res.send(req.query);
 });
-app.post("/postForm", function (req, res) {
-  res.render("result", {
-    title: "post Req Result",
-    userInfo: req.body,
-  });
-});
+
+// app.get("/getForm", function (req, res) {
+//   res.render("result", {
+//     userInfo: req.query,
+//   });
+// });
+// app.post("/postForm", function (req, res) {
+//   res.render("result", {
+//     title: "post Req Result",
+//     userInfo: req.body,
+//   });
+// });

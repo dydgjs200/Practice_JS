@@ -4,11 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+
+    <!-- Axios CDN -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <fieldset>
       <legend>Assignment 1</legend>
-      <form action="/getForm">
+      <form name="axiosForm">
         이름 <input type="text" name="name" />
         <fieldset>
           <legend>성별</legend>
@@ -37,12 +40,47 @@
         </fieldset>
         <fieldset>
           <legend>관심사</legend>
-          <input type="checkbox" />여행 <input type="checkbox" />패션
-          <input type="checkbox" />음식
+          <input type="checkbox" name="check" value="여행" />여행
+          <input type="checkbox" name="check" value="패션" />패션
+          <input type="checkbox" name="check" value="음식" />음식
         </fieldset>
 
-        <input type="submit" name="submit" value="회원가입" />
+        <button type="button" onclick="axiosGet()">회원가입</button>
+        <div class="content"></div>
       </form>
     </fieldset>
+
+    <script>
+      function axiosGet() {
+        let form = document.forms["axiosForm"];
+        let box = document.querySelector(".content");
+        let check = form.check;
+        let isChecked = [];
+
+        for (let i = 0; i < check.length; i++) {
+          if (check[i].checked) {
+            isChecked.push(check[i].value);
+          }
+        }
+
+        const data = {
+          name: form.name.value,
+          gender: form.gender.value,
+          year: form.birthdate.value,
+          check: isChecked,
+        };
+
+        axios({
+          method: "get",
+          url: "/axios",
+          params: data,
+        }).then((res) => {
+          console.log(
+            `name : ${data.name}, gender : ${data.gender}, year : ${data.year}, check : ${data.check}`
+          );
+          box.textContent = `name : ${data.name}, gender : ${data.gender}, year : ${data.year}, check : ${data.check}`;
+        });
+      }
+    </script>
   </body>
 </html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File upload</title>
+
+    <!-- Axios CDN -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <style>
+      .profile {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        box-shadow: 0 0 20px #0002;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>파일 업로드</h1>
+
+    <h2>single file upload</h2>
+    <p>하나의 인풋에 하나의 파일을 업로드</p>
+
+    <!-- single 파일 업로드 -->
+    <!-- multer는 multipart가 아닌 폼에서는 동작 X 그래서 enctype="multipart/form-data" 속성 필수 -->
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <input type="file" name="userfile" />
+      <br />
+      <input type="text" name="title" />
+      <br />
+      <button type="submit">업로드</button>
+      <!-- submit이 type 기본값 -->
+    </form>
+
+    <br />
+    <hr />
+    <!-- multi 파일 업로드 -->
+    <h2>multi file upload</h2>
+    <p>하나의 인풋에 여러개의 파일을 업로드</p>
+
+    <form action="/upload/array" method="post" enctype="multipart/form-data">
+      <!-- file type 에는 multiple 속성 추가 -->
+      <input type="file" name="userfiles" multiple />
+      <br />
+      <input type="text" name="title" />
+      <br />
+      <button type="submit">업로드</button>
+    </form>
+
+    <br />
+    <hr />
+    <!-- fields 파일 업로드 -->
+    <h2>multi file upload</h2>
+    <p>여러개의 인풋에 각각 파일을 업로드</p>
+
+    <form action="/upload/fields" method="post" enctype="multipart/form-data">
+      <!-- file type 에는 multiple 속성 추가 -->
+      <input type="file" name="userfiles1" />
+      <br />
+      <input type="text" name="title" />
+      <br />
+      <input type="file" name="userfiles2" />
+      <br />
+      <input type="text" name="title" />
+      <br />
+      <button type="submit">업로드</button>
+    </form>
+
+    <br />
+    <hr />
+    <h2>동적 파일 업로드</h2>
+    <input type="text" name="title" id="title" placeholder="Title" />
+    <input type="file" name="dynamicFile" id="dynamicFile" /><br />
+    <button type="button" onclick="fileUpload()">업로드</button><br />
+    <img src="" alt="" />
+
+    <script>
+      function fileUpload() {
+        const formData = new FormData(); //FormData 객체 이용 -> form태그 데이터를 동적 제어 -> axios, ajax랑 보통 많이 사용
+        const file = document.querySelector("#dynamicFile");
+        const title = document.querySelector("#title");
+        console.log(file); //선택 파일 요소
+        console.log(file.files); //업로드 한 파일 객체
+        console.log(file.files[0]); //업로드 한 첫 파일
+
+        // append(key, value)
+        formData.append("dynamicFile", file.files[0]);
+        formData.append("title", title.value);
+
+        axios({
+          method: "post",
+          url: "/dynamic",
+          data: formData,
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }).then((res) => {
+          console.log(res);
+          const { file, title } = res.data;
+
+          console.log("file > ", file);
+          // 이미지 저장 경로인 file.path 이용
+          const imgElem = document.querySelector("img");
+          imgElem.src = "/" + file.path;
+          imgElem.alt = title;
+          imgElem.classList.add("profile");
+        });
+      }
+    </script>
+  </body>
+</html>
