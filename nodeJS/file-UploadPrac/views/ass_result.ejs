@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- Axios CDN -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <h2>정적 폼 전송</h2>
+    <form action="/upload/practice" method="post" enctype="multipart/form-data">
+      <input type="text" id="id" />
+      <input type="file" name="profile" id="profile" />
+      <button type="button">제출하기</button>
+    </form>
+
+    <br />
+    <hr />
+    <h2>동적 폼 전송</h2>
+    <form name="submit">
+      <input type="text" name="id" id="id" />
+      <input type="file" name="profile" id="profile" />
+      <button type="button" onclick="register()">제출하기</button>
+    </form>
+
+    <script>
+      function register() {
+        const form = document.forms["submit"];
+        const formData = new FormData();
+
+        console.log(form.profile.files[0]);
+
+        const fileName = form.profile.files[0].name;
+        const file = form.profile.files[0];
+        const userId = form.id.value;
+
+        // 이 방법은 파일 이름 변경 안됩니다..
+        // form.profile.files[0].name = form.id.value;
+
+        // 확장자 떼오기
+        const ext = fileName.split(".")[1];
+        console.log("ext > ", ext);
+
+        // 확장자를 추가해서 새로운 이름으로 파일 생성 -> file 인자는 리스트여야함
+        const newFile = new File([file], `${userId}.${ext}`, {
+          type: file.type,
+        });
+
+        // multer 세부설정에서 req.body를 쓰고나면, 파일을 맨 마지막에 append 해야함
+        formData.append("id", userId);
+        formData.append("profile", file);
+
+        axios({
+          method: "post",
+          url: "/upload/practiceDynamic",
+          data: formData,
+          header: {
+            "Content-Type": "multipart/form-data",
+          },
+        }).then((res) => {
+          console.log(res.data);
+        });
+      }
+    </script>
+  </body>
+</html>

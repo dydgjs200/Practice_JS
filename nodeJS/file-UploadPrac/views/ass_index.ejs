@@ -3,42 +3,114 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Dynamic Form</title>
 
     <!-- Axios CDN -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <style>
-      fieldset {
-        background-color: aquamarine;
-        display: flex;
+      .formBox {
+        background-color: rgb(159, 205, 246);
+        width: 300px;
+        height: 300px;
       }
-      form {
+
+      .formBox > * {
+        display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .profileBox {
+        border: 3px solid black;
+        border-radius: 10px;
+        width: 200px;
+        height: 300px;
+        justify-content: center;
+        align-items: center;
+      }
+      .profileBox p {
+        text-align: center;
+      }
+
+      .profileBox p:nth-child(1) {
+        font-weight: 700;
       }
     </style>
   </head>
   <body>
-    <fieldset>
-      <form action="/register" method="post" enctype="multipart/form-data">
-        <input type="text" name="id" placeholder="ID" />
-        <input type="password" name="password" placeholder="PW" />
-        <input type="text" name="name" placeholder="이름" />
-        <input type="text" name="age" placeholder="나이" />
-        <input type="file" name="profile" name="register" />
-        <button type="button" onclick="fileUpload()">회원가입</button>
-      </form>
-    </fieldset>
+    <script>
+      function fileUploaded() {
+        // Create dynamic form
+        const formData = new FormData();
+        const list = ["id", "password", "name", "age"];
+        const profileFile = document.querySelector("#profile").files[0];
 
-    <!-- 아래는 출력 결과 -->
+        for (let i = 0; i < list.length; i++) {
+          const inputElement = document.querySelector(`#${list[i]}`);
+          formData.append(list[i], inputElement.value);
+        }
+
+        formData.append("profile", profileFile);
+
+        // Make axios request
+        axios({
+          method: "post",
+          url: "/register",
+          data: formData,
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+          .then((res) => {
+            const { file, id, name, age, password } = res.data;
+            const info = document.querySelector(".profileBox");
+            for (let i = 0; i < 4; i++) {
+              let text = document.createElement("p");
+
+              switch (i) {
+                case 0:
+                  text.innerText = `${id} 환영합니다.`;
+                  info.append(text);
+                  break;
+                case 1:
+                  text.innerText = `비밀번호 : ${password}`;
+                  info.append(text);
+                  break;
+                case 2:
+                  text.innerText = `이름 : ${name} `;
+                  info.append(text);
+                  break;
+                case 3:
+                  text.innerText = `나이 : ${age}`;
+                  info.append(text);
+                  break;
+              }
+            }
+
+            // Display file image
+            const img = document.querySelector(".profileBox > img");
+            img.src = "/" + file.path;
+          })
+          .catch((error) => {
+            console.error("Axios Error:", error);
+          });
+      }
+    </script>
+
+    <div class="formBox">
+      <input type="text" name="id" placeholder="ID" id="id" />
+      <input type="password" name="password" placeholder="PW" id="password" />
+      <input type="text" name="name" placeholder="이름" id="name" />
+      <input type="text" name="age" placeholder="나이" id="age" />
+      <input type="file" name="profile" id="profile" />
+      <button type="button" onclick="fileUploaded()">회원가입</button>
+    </div>
+
+    <!-- 출력 결과 -->
     <div class="profileBox">
       <img src="" alt="" />
     </div>
-
-    <script>
-      function fileUpload() {
-        //
-      }
-    </script>
   </body>
 </html>
