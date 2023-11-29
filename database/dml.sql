@@ -40,3 +40,17 @@ select custid from customer;
 -- 패턴 : LIKE
 -- NULL : IS NULL, IS NOT NULL
 -- 복합 조건 : AND, OR, NOT
+
+/*
+    where VS having
+
+    - where
+        1. 각 행을 필터링
+        2. group by 앞에 위치
+        3. 집계함수 사용 X
+    - having
+        1. 그룹에 대한 필터링 (group by로 그룹 지정해야함)
+        2. group by 뒤에 위치
+        3. 집계함수랑 사용 가능
+
+*/
