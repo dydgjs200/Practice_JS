@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입</title>
+    <!-- 기능 추가를 분리한 자바스크립트 파일 연동 -->
+    <script defer src="/static/registerStatic.js"></script>
+    <!-- axios cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <style>
+      .userInfoBox{
+        border: 2px solid black;
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <fieldset>
+      <form name="register-form">
+        <input type="text" name="userid" placeholder="아이디 입력" />
+        <input type="text" name="name" placeholder="이름 입력" />
+        <input type="pw" name="pw" placeholder="패스워드 입력" />
+        <button type="button" onclick="CreateRegister();">제출하기</button>
+      </form>
+    </fieldset>
+
+    <br />
+    <hr />
+
+    <!-- 아래에 db 데이터 출력 -->
+      <div class="userBox">
+        <% for(let i=0; i<data.length; i++){ %>
+          <div class="userInfoBox">
+            <p> id : <%= data[i].id%></p>
+            <p> userid : <%= data[i].userid %></p>
+            <p> name : <%= data[i].name %></p>
+            <p> pw : <%= data[i].pw %></p>
+            <button type="button" onclick="DeleteRegister('<%= data[i].userid%>');">삭제하기</button>
+            <button type="button" onclick="UpdateRegister(this)">수정하기</button>
+          </div>
+        <% } %>
+      </div>
+  </body>
+</html>
