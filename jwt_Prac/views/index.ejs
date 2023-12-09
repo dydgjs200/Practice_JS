@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- axios cdn -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <h1>JWT 실습</h1>
+    <div id="info"></div>
+
+    <script>
+      // index.ejs 렌더 시, 로그인 판별 -> jwt -> 토큰 소지 여부판별
+      // 토큰 존재 시 axios 요청으로 유저 정보 받기
+      // 토큰 비존재 시 login 페이지 링크 띄워줌
+      (async function () {
+        const token = localStorage.getItem("login");
+        const infoBox = document.getElementById("info");
+        let data = "";
+
+        try {
+          if (!token) {
+            data = '<a href="/login">로그인</a>';
+          } else {
+            const res = await axios({
+              method: "post",
+              url: "/token",
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            });
+
+            console.log(res.data);
+
+            if (res.data.isVerify) {
+              data = `
+                <p>${res.data.name}님 환영</p>
+                <button type="button" onclick="logout()">로그아웃</button>
+              `;
+            } else {
+              alert(res.data.msg);
+            }
+          }
+
+          infoBox.innerHTML = data;
+        } catch (erro) {
+          console.log(erro);
+        }
+      })();
+
+      function logout() {
+        localStorage.clear();
+        document.location.reload(); //새로 고침
+      }
+    </script>
+  </body>
+</html>
