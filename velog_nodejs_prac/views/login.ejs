@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>로그인페이지</title>
+
+    <!-- axios cdn -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script defer src="/static/login.js"></script>
+    <script src="/static/tokenVerify.js"></script>
+  </head>
+  <body>
+    <h1>로그인 페이지</h1>
+    <fieldset>
+      <form name="login-field">
+        <input type="text" id="id" />
+        <input type="password" id="password" />
+        <button type="button" onclick="loginUser()">제출하기</button>
+      </form>
+    </fieldset>
+  </body>
+</html>
