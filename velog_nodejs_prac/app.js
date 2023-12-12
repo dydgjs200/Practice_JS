@@ -3,8 +3,17 @@ const app = express();
 const dotenv = require("dotenv");
 const db = require("./model/index");
 const jwt = require("jsonwebtoken");
-const cookieParser = require("cookie-parser");
-const checkTokenMiddleware = require("./middleware/checkToken");
+const session = require("express-session");
+
+// 세션 설정
+app.use(
+  session({
+    secret: "your-secret-key", // 세션을 암호화할 키
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }, // secure: true로 설정하면 https에서만 사용 가능
+  })
+);
 
 dotenv.config();
 const PORT = process.env.PORT;
@@ -17,7 +26,7 @@ function generate_Access_token(payload) {
 function generate_Refresh_token(payload) {
   return jwt.sign(payload, SECRETKEY, { expiresIn: "7d" });
 }
-app.use(cookieParser());
+
 // Controller에서 키발급하도록 exports화
 module.exports = {
   generate_Access_token,
@@ -31,8 +40,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/static", express.static("static"));
 app.use(express.json());
 
-// 미들웨어를 전역으로 사용하도록 설정
-//app.use(checkTokenMiddleware);
 const indexRouter = require("./routes");
 app.use("/", indexRouter);
 

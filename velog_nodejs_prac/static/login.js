@@ -14,9 +14,7 @@ function loginUser() {
 
     // object가 아닐 시, 토큰값이 아닌 경고 메시지가 들어옴
     if (typeof result.data === "object") {
-      const { userId, AccessToken, RefreshToken } = result.data;
-      // 로컬스토리지에 RefreshToken을 저장 후 게시판이동
-      localStorage.setItem(userId, RefreshToken);
+      //const { userId, AccessToken, RefreshToken } = result.data;
       document.location.href = "/board";
     } else {
       alert(result.data);

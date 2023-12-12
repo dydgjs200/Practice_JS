@@ -1,14 +1,14 @@
 const JWT_tokens = require("../app");
 const UserModel = require("../model/index");
-const cookieParser = require("cookie-parser");
+const session = require("express-session");
 const User = UserModel.User;
 
-const express = require("express");
-const app = express();
-app.use(express.json());
-app.use(cookieParser());
-
 exports.main = (req, res) => {
+  // RefreshSession이 있을 경우 Access token이 있는지 db에서 확인해야함..
+  const getRefreshSession = req.session.RefreshToken;
+
+  if (getRefreshSession) {
+  }
   res.render("index");
 };
 
@@ -40,8 +40,7 @@ exports.post_loginUser = (req, res) => {
       result
         .update({ AccessToken: AccessToken })
         .then(console.log("AccessToken Update 완료"));
-
-      res.cookie("Refresh", RefreshToken);
+      req.session.RefreshToken = RefreshToken;
 
       res.json({ userId: data.id, AccessToken, RefreshToken });
     } else {
