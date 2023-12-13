@@ -8,7 +8,7 @@ const UserModel = (sequelize, DataTypes) => {
         primaryKey: true,
       },
       password: {
-        type: DataTypes.STRING(10),
+        type: DataTypes.STRING(255),
         allowNull: false,
       },
       comment: {

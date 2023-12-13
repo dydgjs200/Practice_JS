@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Socket 실습1</title>
+    <!-- socket.io cdn -->
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+
+  <body>
+    <h1>My Chat</h1>
+
+    <!-- [실습1] 각 버튼 누를 때마다 서버로 메시지 보내기 -->
+    <button onclick="sayHello()">hello</button>
+    <button onclick="sayStudy()">study</button>
+    <button onclick="sayBye()">bye</button>
+
+    <p id="server_result"></p>
+
+    <script>
+      // 소켓 사용을 위한 객체 생성
+      const socket = io.connect();
+
+      socket.on("connect", () => {
+        console.log("클라이언트 연결 완료 >", socket.id);
+      });
+
+      // hello emit
+      function sayHello() {
+        socket.emit("hello", { who: "client", msg: "hello" });
+      }
+      // helloKR
+      socket.on("helloKR", (data) => {
+        // console.log(`${data.who} : ${data.msg}`);
+        document.getElementById(
+          "server_result"
+        ).textContent = `${data.who} : ${data.msg}`;
+      });
+    </script>
+  </body>
+</html>

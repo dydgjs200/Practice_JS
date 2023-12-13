@@ -22,3 +22,21 @@ function loginUser() {
     }
   });
 }
+
+function registerUser() {
+  const regiForm = document.forms["register-field"];
+
+  axios({
+    method: "post",
+    url: "/register",
+    data: {
+      id: regiForm.reg_id.value,
+      password: regiForm.reg_password.value,
+    },
+  }).then((res) => {
+    alert("회원가입 성공");
+
+    console.log("해시된 비밀번호 값 > ", res);
+    document.location.href = "/login";
+  });
+}

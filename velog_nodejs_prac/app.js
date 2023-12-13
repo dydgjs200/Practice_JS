@@ -5,6 +5,12 @@ const db = require("./model/index");
 const jwt = require("jsonwebtoken");
 const session = require("express-session");
 
+// 서버 require
+const socketIO = require("socket.io");
+const http = require("http");
+const server = http.createServer(app);
+const io = socketIO(server);
+
 // 세션 설정
 app.use(
   session({
@@ -40,11 +46,15 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/static", express.static("static"));
 app.use(express.json());
 
+// 소켓통신 컨트롤러 등록 -> io 바로 넣기
+const socketController = require("./controller/Csocket")(io);
+
 const indexRouter = require("./routes");
 app.use("/", indexRouter);
 
+// socket io에서 listen할 때는 http가 되어야함
 db.sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => {
+  server.listen(PORT, () => {
     console.log("server open");
   });
 });
