@@ -10,11 +10,10 @@ exports.main = (req, res) => {
   // 리프레시 토큰이 있다면 로그아웃 버튼을 생성해야함
   if (req.session.RefreshId) {
     console.log("Refresh session > ", req.session.RefreshId);
-
-    res.render("index", { isLogoutBtn: true });
+    res.render("index", { isLogin: true });
   } else {
     console.log("리프레시 토큰 세션 존재하지않음.");
-    res.render("index");
+    res.render("index", { isLogin: false });
   }
 };
 
