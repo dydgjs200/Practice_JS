@@ -1,5 +1,7 @@
 import "./App.css";
 import { useState } from "react";
+import "./ex2";
+import ex2 from "./ex2";
 
 function App() {
   // 서버에서 가져온 데이터라고 가정함.
@@ -96,6 +98,10 @@ function App() {
       3. 자주 변경되는 것들
       */}
       {/* <Modal></Modal> */}
+
+      <hr></hr>
+      {/* 코딩온 예제2 */}
+      <ex2 title="책이름" author="작가" price="1800" type="자기계발서"></ex2>
     </div>
   );
 }
