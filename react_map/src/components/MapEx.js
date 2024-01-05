@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 function MapEx() {
   const [selectType, setSelectType] = useState(["제목", "작성자"]);
@@ -8,13 +8,36 @@ function MapEx() {
 
   const [searchList, setSearchList] = useState([]);
 
-  const submitTtile = (event) => {
-    setTitle(event.target.value);
-    console.log("title > ", event.target.value);
+  // focus를 위한 ref
+  const focusTitle = useRef();
+  const focusWriter = useRef();
+  const inputFocus = (inputRef) => {
+    inputRef.current.focus();
   };
+
+  const submitTtile = (event) => {
+    if (event.key == "Enter") {
+      if (writer === "") {
+        inputFocus(focusWriter);
+      } else if (title === "") {
+        inputFocus(focusTitle);
+      } else {
+        addList();
+      }
+    } else {
+      setTitle(event.target.value);
+    }
+  };
+
   const submitWriter = (event) => {
     if (event.key == "Enter") {
-      addList();
+      if (title === "") {
+        inputFocus(focusTitle);
+      } else if (writer === "") {
+        inputFocus(focusWriter);
+      } else {
+        addList();
+      }
     } else {
       setWriter(event.target.value);
     }
@@ -38,9 +61,20 @@ function MapEx() {
     <div>
       <fieldset>
         <form>
-          작성자 : <input type="text" onChange={submitTtile} />
+          작성자 :{" "}
+          <input
+            type="text"
+            ref={focusTitle}
+            onChange={submitTtile}
+            onKeyDown={submitTtile}
+          />
           제목 :{" "}
-          <input type="text" onChange={submitWriter} onKeyDown={submitWriter} />
+          <input
+            type="text"
+            ref={focusWriter}
+            onChange={submitWriter}
+            onKeyDown={submitWriter}
+          />
           <button type="button" onClick={addList}>
             제출
           </button>
