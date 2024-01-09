@@ -1,5 +1,6 @@
 import "./styles/App.css";
 import SassEx from "./SassEx";
+import StyledComponent from "./StyledComponent";
 
 function App() {
   return (
@@ -8,6 +9,9 @@ function App() {
 
       <hr />
       <SassEx></SassEx>
+      <hr />
+
+      <StyledComponent></StyledComponent>
     </div>
   );
 }
